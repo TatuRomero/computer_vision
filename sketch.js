@@ -9,6 +9,7 @@ let flippedVideo;
 // To store the classification
 // Almacena las etiquetas de los nombres que creamos (Esmalte, Tubo de ensayo, Fondo)
 let label = "";
+let confianza = 0;
 
 // Load the model first
 // Esta función debe ejutarse antes de que se inicie function setup
@@ -38,6 +39,10 @@ function draw() {
   textSize(16);
   textAlign(CENTER);
   text(label, width / 2, height - 4);
+
+  textSize(8);
+  textAlign(LEFT);
+  text(confianza, 10, height - 4);
 }
 
 // Get a prediction for the current video frame
@@ -54,9 +59,11 @@ function gotResult(results, error) {
     console.error(error);
     return;
   }
+
   // The results are in an array ordered by confidence.
   // console.log(results[0]);
   label = results[0].label;
+  confianza = results[0].confidence;
   // Classifiy again!
   classifyVideo();
 }
