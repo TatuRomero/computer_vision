@@ -48,7 +48,7 @@ function classifyVideo() {
 }
 
 // When we get a result
-function gotResult(error, results) {
+function gotResult(results, error) {
   // If there is an error
   if (error) {
     console.error(error);
