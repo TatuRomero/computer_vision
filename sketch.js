@@ -43,6 +43,10 @@ function draw() {
   textSize(8);
   textAlign(LEFT);
   text(confianza, 10, height - 4);
+
+  if ((label = "Esmalte")) {
+    background(221, 27, 189);
+  }
 }
 
 // Get a prediction for the current video frame
