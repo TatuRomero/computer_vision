@@ -1,7 +1,7 @@
 // Classifier Variable
 let classifier;
 // Model URL
-let imageModelURL = "https://teachablemachine.withgoogle.com/models/HgbsDlG_n/";
+let imageModelURL = "https://teachablemachine.withgoogle.com/models/-ONzIaEe6/";
 
 // Video
 let video;
@@ -12,7 +12,7 @@ let label = "";
 let confianza = 0;
 
 // Load the model first
-// Esta función debe ejutarse antes de que se inicie function setup
+// Esta función debe ejecutarse antes de que se inicie function setup
 function preload() {
   classifier = ml5.imageClassifier(imageModelURL + "model.json");
 }
@@ -24,7 +24,7 @@ function setup() {
   video.size(320, 240);
   video.hide();
 
-  //   flippedVideo = ml5.flipImage(video);
+  // flippedVideo = ml5.flipImage(video);
   // Start classifying
   classifyVideo();
 }
@@ -44,16 +44,16 @@ function draw() {
   textAlign(LEFT);
   text(confianza, 10, height - 4);
 
-  if ((label = "Esmalte")) {
+  if ((label = "Stitch Rosa")) {
     background(221, 27, 189);
   }
 }
 
 // Get a prediction for the current video frame
 function classifyVideo() {
-  //   flippedVideo = ml5.flipImage(video);
+  // flippedVideo = ml5.flipImage(video);
   classifier.classify(video, gotResult);
-  //   flippedVideo.remove();
+  // flippedVideo.remove();
 }
 
 // When we get a result
@@ -63,7 +63,6 @@ function gotResult(results, error) {
     console.error(error);
     return;
   }
-
   // The results are in an array ordered by confidence.
   // console.log(results[0]);
   label = results[0].label;
